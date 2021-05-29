@@ -1,0 +1,89 @@
+<form method="post" action="/filterArticle/">
+    {% csrf_token %}
+
+    {# label #}
+    <div class="row" style="margin-bottom: 5px">
+        <div class="col-md-12">
+            <label>
+                Фильтр
+            </label>
+        </div>
+    </div>
+
+    {# date from #}
+    <div class="row" style="margin-bottom: 5px">
+        <div class="col-md-12">
+            <label for="filterDateFrom">с: </label>
+            <input name="filterDateFrom" type="date" class="form-control" id="filterDateFrom">
+        </div>
+    </div>
+
+    {# date to #}
+    <div class="row" style="margin-bottom: 5px">
+        <div class="col-md-12">
+            <label for="filterDateTo">по: </label>
+            <input name="filterDateTo" type="date" class="form-control" id="filterDateTo">
+        </div>
+    </div>
+
+    {# author #}
+    <div class="row" style="margin-bottom: 5px">
+        <div class="col-md-12">
+            <label for="selectAuthor">Автор:</label><br>
+            <select name="authorSelect" class="custom-select" id="selectAuthor">
+                <option>-</option>
+                {% for a in authors %}
+                    <option>{{ a }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    {# source #}
+    <div class="row" style="margin-bottom: 5px">
+        <div class="col-md-12">
+            <label for="selectSource">Источник:</label><br>
+            <select name="sourceSelect" class="custom-select" id="selectSource">
+                <option>-</option>
+                {% for a in sources %}
+                    <option>{{ a }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    {# tag #}
+    <div class="row" style="margin-bottom: 5px">
+        <div class="col-md-12">
+            <label for="selectTags">Тег:</label><br>
+            <select name="tagSelect" class="custom-select" id="selectTags">
+                <option>-</option>
+                {% for a in tags %}
+                    <option>{{ a }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    {# buttons #}
+    <div class="row" style="margin-bottom: 5px">
+        <div class="col-md-6">
+            <input class="btn btn-primary btn-sm" type="submit" name="action" value="Применить">
+        </div>
+{#        <div class="col-lg-6">#}
+{#            <input class="btn btn-primary btn-sm btn-dark" type="button" value="Сбросить">#}
+{#        </div>#}
+    </div>
+
+</form>
+
+<div class="row" style="margin-top: 15px">
+    <div class="col-md-12">
+        <form action="{% url 'getArticle' '-' %}" method="get">
+            <button id="btnCreate" type="submit" name="action" class="btn btn-primary">
+                <span class="fas fa-plus"></span>
+                Создать статью
+            </button>
+        </form>
+    </div>
+</div>

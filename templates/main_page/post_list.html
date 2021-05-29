@@ -1,0 +1,69 @@
+{% load bootstrap_pagination %}
+<form method="POST" action="/searchArticle/">
+    {% csrf_token %}
+
+    {# Serach #}
+    <div class="row" style="margin-bottom: 10px">
+        <div class="col-md-12">
+            <input type="text" class="form-control form-control-sm" placeholder="Поиск" name="param" aria-label="">
+        </div>
+    </div>
+
+
+    {# Sort #}
+    <div class="row" style="margin-bottom: 5px">
+
+        <div class="col-md-12" id="divSort">
+
+            <div class="form-check">
+                <input id="radioHeader" class="form-check-input" type="radio"
+                       name="radio" value="title">
+                <label class="form-check-label" for="radioHeader"> заголовку </label>
+            </div>
+
+            <div class="form-check">
+                <input id="radioDate" class="form-check-input" type="radio"
+                       name="radio" value="date">
+                <label class="form-check-label" for="radioDate"> дате </label>
+            </div>
+
+            <div class="form-check">
+                <input id="radioAuthor" class="form-check-input" type="radio"
+                       name="radio" value="author">
+                <label class="form-check-label" for="radioAuthor"> автору </label>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-bottom: 5px">
+        <div class="col-md-12">
+            <button class="btn btn-primary" type="submit" name="action">Поиск</button>
+        </div>
+    </div>
+
+</form>
+
+{# List #}
+<div class="row" style="margin-bottom: 5px">
+    <div class="col-lg-12">
+        <div id="articleList" class="list-group list-group-flush">
+            {% for post in page_obj %}
+                <a href="{% url 'getArticle' post %}" id="{{ post }}"
+                   class="list-group-item list-group-item-action">{{ post }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{# Pagination #}
+<div class="row" style="margin-bottom: 5px">
+    <div class="col-lg-12">
+        <div class="pagination-row pagination justify-content-center">
+            {% bootstrap_paginate page_obj range=10 show_prev_next="true" show_first_last="true" %}
+        </div>
+    </div>
+</div>
+

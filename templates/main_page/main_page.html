@@ -1,0 +1,17 @@
+{% extends 'wrapper.html' %}
+
+{% block content %}
+
+<div class="row" style="margin: 10px">
+
+    <div class="col-md-4">
+        {% include 'main_page/filter.html' %}
+    </div>
+
+    <div class="col-md-8">
+        {% include 'main_page/post_list.html' %}
+    </div>
+
+</div>
+
+{% endblock %}

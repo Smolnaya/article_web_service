@@ -1,0 +1,93 @@
+{% extends 'wrapper.html' %}
+
+{% block content %}
+
+    {#      Title #}
+    <div class="row" style="margin: 5px">
+        <div class="col-md-12">
+            <input disabled="disabled" aria-label="Заголовок" type="text"
+                   class="form-control" placeholder="Заголовок" id="articleHeader"
+                   value="{{ article_obj.title }}">
+        </div>
+    </div>
+
+    {#    Date and Author #}
+    <div class="row" style="margin: 5px">
+        <div class="col-md-6">
+            <input disabled="disabled" aria-label="Дата публикации" type="date"
+                   class="form-control" placeholder="Дата" id="articleDate"
+                   value="{{ article_obj.date }}">
+        </div>
+        <div class="col-md-6">
+            <input disabled="disabled" aria-label="Автор" type="text"
+                   class="form-control" placeholder="Автор" id="articleAuthor"
+                   value="{{ article_obj.author }}">
+        </div>
+    </div>
+
+    {#    Text #}
+    <div class="row" style="margin: 5px">
+        <div class="col-md-12">
+            <textarea disabled="disabled" aria-label="" class="form-control" placeholder="Текст" rows="15"
+                      id="articleText">{{ article_obj.text }}</textarea>
+        </div>
+    </div>
+
+    {#    Tags and Source #}
+    <div class="row" style="margin: 5px">
+        <div class="col-md-6">
+            <label for="articleTags">
+                Теги
+            </label>
+            <input disabled="disabled" type="text" class="form-control" placeholder="Теги"
+                   id="articleTags" value="{{ article_obj.tags }}">
+        </div>
+        <div class="col-md-6">
+            <label for="articleSource">
+                Источник
+            </label>
+            <input disabled="disabled" type="text" class="form-control" placeholder="Источник"
+                   id="articleSource" value="{{ article_obj.source }}">
+        </div>
+    </div>
+
+    {#    Change buttons #}
+    <div class="row" style="margin: 5px">
+        <div class="col-md-6">
+            <button id="btnEdit" type="button" class="btn btn-primary" onclick="unblockForm()">
+                <span class="fas fa-edit"></span>
+                Редактировать
+            </button>
+        </div>
+        <div class="col-md-6">
+            <button onclick="deleteArticle()" id="btnDelete" type="button"
+                    class="btn btn-primary btn-dark">
+                <span class="fas fa-remove"></span>
+                Удалить статью
+            </button>
+        </div>
+
+    </div>
+
+    {#    Delete button #}
+    <div class="row" style="margin: 5px">
+        <div class="col-md-6">
+            <button disabled="disabled" onclick="updateArticle()" id="btnApply"
+                    type="button" class="btn btn-primary">
+                <span class="fas fa-edit"></span>
+                Применить
+            </button>
+        </div>
+    </div>
+
+    {#    Home button #}
+    <div class="row" style="margin: 5px">
+        <div class="col-md-6">
+            <button id="btnDelete" type="button" onclick="goHomePage()"
+                    class="btn btn-primary btn-info">
+                На главную
+            </button>
+        </div>
+    </div>
+
+{% endblock %}
