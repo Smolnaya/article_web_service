@@ -125,7 +125,7 @@ def getDataForFilter():
         author.append(article.author)
         tags.append(article.tags)
         source.append(article.source)
-    return list(set(author)), list(set(tags)), list(set(source))
+    return list(set(author)), list(set(source)), list(set(tags))
 
 
 def validateFilterData(dateFrom, dateTo, author, source, tag):

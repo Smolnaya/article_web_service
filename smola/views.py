@@ -26,8 +26,8 @@ def index(request):
 
         context = {'page_obj': post,
                    'authors': filterData[0],
-                   'tags': filterData[1],
-                   'sources': filterData[2]}
+                   'sources': filterData[1],
+                   'tags': filterData[2]}
 
         return render(request, 'main_page/main_page.html', context)
 
